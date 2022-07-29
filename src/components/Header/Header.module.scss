@@ -1,3 +1,20 @@
 .navbar-nav {
   text-align: center;
 }
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #1266f1;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.nav-link {
+  color: rgba(0, 0, 0, 0.55);
+}
+@media only screen and (min-width: 992px) {
+  .nav-link {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+}

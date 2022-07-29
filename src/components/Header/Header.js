@@ -7,7 +7,7 @@ import {
   MDBIcon,
   MDBNavbarNav,
   MDBNavbarItem,
-  MDBNavbarLink,
+  // MDBNavbarLink,
   MDBNavbarToggler,
   MDBNavbarBrand,
   MDBCollapse,
@@ -41,25 +41,19 @@ function Header() {
           <MDBCollapse navbar show={showBasic}>
             <MDBNavbarNav className={cl('mr-auto mb-2 mb-lg-0', 'navbar-nav')}>
               <MDBNavbarItem>
-                <MDBNavbarLink className="nav-link">
-                  <NavLink to="/" className="text-white">
-                    Home
-                  </NavLink>
-                </MDBNavbarLink>
+                <NavLink to="/" className={cl('text-white', 'nav-link')}>
+                  Home
+                </NavLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink className="nav-link">
-                  <NavLink to="/addUser" className="text-white">
-                    Add User
-                  </NavLink>
-                </MDBNavbarLink>
+                <NavLink to="/addUser" className={cl('text-white', 'nav-link')}>
+                  Add User
+                </NavLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink className="nav-link">
-                  <NavLink to="/about" className="text-white">
-                    About
-                  </NavLink>
-                </MDBNavbarLink>
+                <NavLink to="/about" className={cl('text-white', 'nav-link')}>
+                  About
+                </NavLink>
               </MDBNavbarItem>
             </MDBNavbarNav>
           </MDBCollapse>
