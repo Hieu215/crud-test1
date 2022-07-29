@@ -1,4 +1,5 @@
-import { CREATE_USER } from '~/constants';
+import { CREATE_USER } from "~/constants";
+
 const initialState = {
   users: [],
   loading: false,

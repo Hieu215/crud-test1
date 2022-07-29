@@ -9,6 +9,12 @@ const loadUsersApi = async () => {
   }
 };
 const createUserApi = async (user) => {
-  await axios.post('https://62d92a8b5d893b27b2dfa3ee.mockapi.io/crud-test1', user);
+  console.log('nnnn');
+  try {
+    const create = await axios.post('https://62d92a8b5d893b27b2dfa3ee.mockapi.io/crud-test1', user);
+    return create;
+  } catch (error) {
+    console.error(error.toString());
+  }
 };
-export { loadUsersApi,createUserApi };
+export { loadUsersApi, createUserApi };
