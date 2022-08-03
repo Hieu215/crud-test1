@@ -1,10 +1,11 @@
 import styles from './InfoUserStyles.module.scss';
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import { MDBBtn } from 'mdb-react-ui-kit';
+import { loadUsers } from '~/actions';
 const cl = classNames.bind(styles);
 const initialState = {
   id: '',
@@ -17,13 +18,22 @@ function InfoUser() {
   const { users } = useSelector((state) => state.users);
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [fromValue, setFromValue] = useState(initialState);
   useEffect(() => {
+    dispatch(loadUsers());
+  }, []);
+  const getDataForm = () => {
     if (id) {
       const singleUser = users.find((user) => user.id === id);
       setFromValue({ ...singleUser });
     }
-  }, [id]);
+  };
+  useEffect(() => {
+    if (users) {
+      getDataForm();
+    }
+  }, [users]);
   return (
     <div className={cl('header')}>
       <div className={cl('nav-header', 'row')}>

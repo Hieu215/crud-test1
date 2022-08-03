@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
 import styles from './EditUserStyles.module.scss';
-import { editUserStart } from '~/actions';
+import { editUserStart, loadUsers } from '~/actions';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const cl = classNames.bind(styles);
@@ -22,12 +22,23 @@ const EditUser = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { users } = useSelector((state) => state.users);
-  useEffect(() => {
+  console.log(users);
+
+  const getDataForm = () => {
     if (id) {
       const singleUser = users.find((user) => user.id === id);
       setFromValue({ ...singleUser });
     }
-  }, [id]);
+  };
+
+  useEffect(() => {
+    if (users) {
+      getDataForm();
+    }
+  }, [users]);
+  useEffect(() => {
+    dispatch(loadUsers());
+  }, []);
   const handleEdit = (e) => {
     e.preventDefault();
     if (name && email && phone && address) {
