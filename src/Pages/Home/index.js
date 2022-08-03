@@ -1,18 +1,30 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { loadUsers } from '~/actions';
-import { MDBTable, MDBTableHead, MDBTableBody, MDBBtn, MDBTooltip, MDBIcon } from 'mdb-react-ui-kit';
+import { deleteUserStart, loadUsers } from '~/actions';
+import { MDBTable, MDBTableHead, MDBTableBody, MDBBtn, MDBTooltip, MDBIcon, MDBSpinner } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
 import styles from './HomeStyles.module.scss';
 import classNames from 'classnames/bind';
+
 const cl = classNames.bind(styles);
 function Home() {
   const dispatch = useDispatch();
-  const { users } = useSelector((state) => state.users);
+  const { users, loading } = useSelector((state) => state.users);
   useEffect(() => {
     dispatch(loadUsers());
   }, []);
-  const handleDelete = () => {};
+  if (loading) {
+    return (
+      <MDBSpinner className={cl('container')} role="status">
+        <span className="visually-hidden">Loading...</span>
+      </MDBSpinner>
+    );
+  }
+  const handleDelete = (id) => {
+    if (window.confirm('Are you sure')) {
+      dispatch(deleteUserStart(id));
+    }
+  };
   return (
     <div className={cl('container')}>
       <MDBTable>
@@ -43,6 +55,11 @@ function Home() {
                 <Link to={`./editUser/${user.id}`}>
                   <MDBTooltip title="Edit" tag="span">
                     <MDBIcon fas icon="pen" style={{ color: '#55acee', marginBottom: '10px' }} size="lg" />
+                  </MDBTooltip>
+                </Link>{' '}
+                <Link to={`./addUser/${user.id}`}>
+                  <MDBTooltip title="Add" tag="span">
+                    <MDBIcon fas icon="plus" style={{ color: '#55acee', marginBottom: '10px' }} size="lg" />
                   </MDBTooltip>
                 </Link>{' '}
                 <Link to={`./infoUser/${user.id}`}>

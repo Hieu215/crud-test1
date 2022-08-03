@@ -1,4 +1,4 @@
-import { USERS, CREATE_USER } from '~/constants';
+import { USERS, CREATE_USER, DELETE_USER, EDIT_USER } from '~/constants';
 const loadUsers = () => ({
   type: USERS.LOAD,
 });
@@ -21,4 +21,40 @@ const createUserFail = (error) => ({
   type: CREATE_USER.FAIL,
   payload: error,
 });
-export { loadUsers, loadUsersSucces, loadUsersFail, createUserStart, createUserSucces, createUserFail };
+const deleteUserStart = (userId) => ({
+  type: DELETE_USER.START,
+  payload: userId,
+});
+const deleteUserSucces = (userId) => ({
+  type: DELETE_USER.SUCCESS,
+  payload: userId,
+});
+const deleteUserFail = (error) => ({
+  type: DELETE_USER.FAIL,
+  payload: error,
+});
+const editUserStart = (userInfo) => ({
+  type: EDIT_USER.START,
+  payload: userInfo,
+});
+const editUserSucces = () => ({
+  type: EDIT_USER.SUCCESS,
+});
+const editUserFail = (error) => ({
+  type: EDIT_USER.FAIL,
+  payload: error,
+});
+export {
+  loadUsers,
+  loadUsersSucces,
+  loadUsersFail,
+  createUserStart,
+  createUserSucces,
+  createUserFail,
+  deleteUserStart,
+  deleteUserSucces,
+  deleteUserFail,
+  editUserStart,
+  editUserSucces,
+  editUserFail,
+};

@@ -5,7 +5,7 @@ const initialState = {
   loading: false,
   error: null,
 };
-const CreateUsersReducer = (state = initialState, action) => {
+const createUsersReducer = (state = initialState, action) => {
     switch (action.type) {
       case CREATE_USER.START:
         return {
@@ -27,4 +27,4 @@ const CreateUsersReducer = (state = initialState, action) => {
         return state;
     }
   };
-  export default CreateUsersReducer;
+  export default createUsersReducer;

@@ -9,12 +9,27 @@ const loadUsersApi = async () => {
   }
 };
 const createUserApi = async (user) => {
-  console.log('nnnn');
   try {
-    const create = await axios.post('https://62d92a8b5d893b27b2dfa3ee.mockapi.io/crud-test1', user);
-    return create;
+    const createUser = await axios.post('https://62d92a8b5d893b27b2dfa3ee.mockapi.io/crud-test1', user);
+    return createUser;
   } catch (error) {
     console.error(error.toString());
   }
 };
-export { loadUsersApi, createUserApi };
+const deleteUserApi = async (userId) => {
+  try {
+    const deleteUser = await axios.delete(`https://62d92a8b5d893b27b2dfa3ee.mockapi.io/crud-test1/${userId}`);
+    return deleteUser;
+  } catch (error) {
+    console.error(error.toString());
+  }
+};
+const editUserApi = async (userId, userInfo) => {
+  try {
+    const editUser = await axios.put(`https://62d92a8b5d893b27b2dfa3ee.mockapi.io/crud-test1/${userId}`, userInfo);
+    return editUser;
+  } catch (error) {
+    console.error(error.toString());
+  }
+};
+export { loadUsersApi, createUserApi, deleteUserApi, editUserApi };

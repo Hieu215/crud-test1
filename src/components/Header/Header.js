@@ -21,11 +21,13 @@ function Header() {
     <>
       <MDBNavbar expand="lg" light bgColor="primary">
         <MDBContainer fluid>
-          <MDBNavbarBrand className="text-white">
-            <span style={{ marginRight: '10px' }}>
-              <MDBIcon fas icon="book-open" />
-            </span>
-            Contact
+          <MDBNavbarBrand className="text-white" tag="div">
+            <NavLink to="/" className="text-white">
+              <span style={{ marginRight: '10px' }}>
+                <MDBIcon fas icon="book-open" />
+              </span>
+              Contact
+            </NavLink>
           </MDBNavbarBrand>
           <MDBNavbarToggler
             aria-controls="navbar"
@@ -46,7 +48,7 @@ function Header() {
                 </NavLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <NavLink to="/addUser" className={cl('text-white', 'nav-link')}>
+                <NavLink to="/addUser/:id" className={cl('text-white', 'nav-link')}>
                   Add User
                 </NavLink>
               </MDBNavbarItem>
