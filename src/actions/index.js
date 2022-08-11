@@ -1,4 +1,4 @@
-import { USERS, CREATE_USER, DELETE_USER, EDIT_USER } from '~/constants';
+import { USERS, CREATE_USER, DELETE_USER, EDIT_USER, SEARCH_USER, GET_USER } from '~/constants';
 const loadUsers = () => ({
   type: USERS.LOAD,
 });
@@ -44,6 +44,29 @@ const editUserFail = (error) => ({
   type: EDIT_USER.FAIL,
   payload: error,
 });
+const searchUserStart = (keyword) => ({
+  type: SEARCH_USER.START,
+  payload: keyword,
+});
+const searchUserSucces = () => ({
+  type: SEARCH_USER.SUCCESS,
+});
+const searchUserFail = (error) => ({
+  type: EDIT_USER.FAIL,
+  payload: error,
+});
+const getUserStart = (userId) => ({
+  type: GET_USER.START,
+  payload: userId,
+});
+const getUserSucces = (user) => ({
+  type: GET_USER.SUCCESS,
+  payload: user,
+});
+const getUserFail = (error) => ({
+  type: GET_USER.FAIL,
+  payload: error,
+});
 export {
   loadUsers,
   loadUsersSucces,
@@ -57,4 +80,10 @@ export {
   editUserStart,
   editUserSucces,
   editUserFail,
+  searchUserStart,
+  searchUserSucces,
+  searchUserFail,
+  getUserStart,
+  getUserSucces,
+  getUserFail,
 };

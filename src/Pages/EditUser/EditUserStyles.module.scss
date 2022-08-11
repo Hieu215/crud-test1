@@ -14,4 +14,14 @@
     justify-content: center;
     padding-top: 15px;
   }
+  .all-button {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  .erros-toast {
+    width: auto;
+    font-size: 0.875rem;
+    color: #f93154;
+  }
 }

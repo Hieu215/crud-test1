@@ -32,4 +32,12 @@ const editUserApi = async (userId, userInfo) => {
     console.error(error.toString());
   }
 };
-export { loadUsersApi, createUserApi, deleteUserApi, editUserApi };
+const getUserApi = async (userId) => {
+  try {
+    const getUSer = await axios.get(`https://62d92a8b5d893b27b2dfa3ee.mockapi.io/crud-test1/${userId}`);
+    return getUSer;
+  } catch (error) {
+    console.error(error.toString());
+  }
+};
+export { loadUsersApi, createUserApi, deleteUserApi, editUserApi, getUserApi };

@@ -5,11 +5,12 @@ import { MDBTable, MDBTableHead, MDBTableBody, MDBBtn, MDBTooltip, MDBIcon, MDBS
 import { Link } from 'react-router-dom';
 import styles from './HomeStyles.module.scss';
 import classNames from 'classnames/bind';
-
+import Search from '~/components/Search';
 const cl = classNames.bind(styles);
 function Home() {
   const dispatch = useDispatch();
   const { users, loading } = useSelector((state) => state.users);
+  const { keyWord } = useSelector((state) => state.searchUser);
   useEffect(() => {
     dispatch(loadUsers());
   }, []);
@@ -25,8 +26,16 @@ function Home() {
       dispatch(deleteUserStart(id));
     }
   };
+  let searchData = users.filter((user) => {
+    if (keyWord === '') {
+      return user;
+    } else {
+      return user.phone.includes(keyWord);
+    }
+  });
   return (
     <div className={cl('container')}>
+      <Search />
       <MDBTable>
         <MDBTableHead dark>
           <tr>
@@ -38,7 +47,7 @@ function Home() {
             <th>actions</th>
           </tr>
         </MDBTableHead>
-        {users.map((user, index) => (
+        {searchData.map((user, index) => (
           <MDBTableBody key={index}>
             <tr>
               <th scope="row">{index + 1}</th>

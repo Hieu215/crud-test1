@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import { MDBBtn } from 'mdb-react-ui-kit';
-import { loadUsers } from '~/actions';
+import { getUserStart } from '~/actions';
 const cl = classNames.bind(styles);
 const initialState = {
   id: '',
@@ -15,19 +15,24 @@ const initialState = {
   address: '',
 };
 function InfoUser() {
-  const { users } = useSelector((state) => state.users);
+  const { users } = useSelector((state) => state.getUser);
+
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [fromValue, setFromValue] = useState(initialState);
   useEffect(() => {
-    dispatch(loadUsers());
-  }, []);
-  const getDataForm = () => {
     if (id) {
-      const singleUser = users.find((user) => user.id === id);
-      setFromValue({ ...singleUser });
+      dispatch(getUserStart(id));
     }
+    // dispatch(loadUsers());
+  }, [id]);
+  const getDataForm = () => {
+    // if (id) {
+    // const singleUser = users.find((user) => user.id === id);
+    // setFromValue({ ...singleUser });
+    // }
+    setFromValue({ ...users });
   };
   useEffect(() => {
     if (users) {
