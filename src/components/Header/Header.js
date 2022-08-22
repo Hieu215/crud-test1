@@ -58,6 +58,18 @@ function Header() {
                 </NavLink>
               </MDBNavbarItem>
             </MDBNavbarNav>
+            <MDBNavbarNav className={cl('navbar-authen')}>
+              <MDBNavbarItem className={cl('nav-item')}>
+                <NavLink to="/login/:id" className={cl('text-white', 'nav-link')}>
+                  Login
+                </NavLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem className={cl('nav-item')}>
+                <NavLink to="/register/:id" className={cl('text-white', 'nav-link')}>
+                  Register
+                </NavLink>
+              </MDBNavbarItem>
+            </MDBNavbarNav>
           </MDBCollapse>
         </MDBContainer>
       </MDBNavbar>

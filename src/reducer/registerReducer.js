@@ -1,24 +1,23 @@
-import { USERS } from '~/constants';
+import { REGISTER } from '~/constants';
+
 const initialState = {
-  users: [],
+  currentUser: [],
   loading: false,
   error: null,
 };
-const usersReducer = (state = initialState, action) => {
-
+const registerReducer = (state = initialState, action) => {
   switch (action.type) {
-    case USERS.LOAD:
+    case REGISTER.START:
       return {
         ...state,
         loading: true,
       };
-    case USERS.LOAD_SUCCESS:
+    case REGISTER.SUCCESS:
       return {
         ...state,
         loading: false,
-        users: action.payload,
       };
-    case USERS.LOAD_FAIL:
+    case REGISTER.FAIL:
       return {
         ...state,
         loading: false,
@@ -28,4 +27,4 @@ const usersReducer = (state = initialState, action) => {
       return state;
   }
 };
-export default usersReducer;
+export default registerReducer;

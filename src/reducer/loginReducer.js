@@ -1,24 +1,23 @@
-import { USERS } from '~/constants';
+import { LOGIN } from '~/constants';
 const initialState = {
-  users: [],
+  currentUsers: null,
   loading: false,
-  error: null,
+  error: false,
 };
-const usersReducer = (state = initialState, action) => {
-
+const loginReducer = (state = initialState, action) => {
   switch (action.type) {
-    case USERS.LOAD:
+    case LOGIN.START:
       return {
         ...state,
         loading: true,
       };
-    case USERS.LOAD_SUCCESS:
+    case LOGIN.SUCCESS:
       return {
         ...state,
         loading: false,
-        users: action.payload,
+        currentUsers: action.payload,
       };
-    case USERS.LOAD_FAIL:
+    case LOGIN.FAIL:
       return {
         ...state,
         loading: false,
@@ -28,4 +27,4 @@ const usersReducer = (state = initialState, action) => {
       return state;
   }
 };
-export default usersReducer;
+export default loginReducer;

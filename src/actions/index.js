@@ -1,4 +1,14 @@
-import { USERS, CREATE_USER, DELETE_USER, EDIT_USER, SEARCH_USER, GET_USER } from '~/constants';
+import {
+  USERS,
+  CREATE_USER,
+  DELETE_USER,
+  EDIT_USER,
+  SEARCH_USER,
+  GET_USER,
+  NUMBER,
+  REGISTER,
+  LOGIN,
+} from '~/constants';
 const loadUsers = () => ({
   type: USERS.LOAD,
 });
@@ -67,6 +77,40 @@ const getUserFail = (error) => ({
   type: GET_USER.FAIL,
   payload: error,
 });
+const numberStart = (number) => ({
+  type: NUMBER.START,
+  payload: number,
+});
+const numberSucces = () => ({
+  type: NUMBER.SUCCESS,
+});
+const numberFail = (error) => ({
+  type: NUMBER.FAIL,
+  payload: error,
+});
+const registerAccountStart = (account) => ({
+  type: REGISTER.START,
+  payload: account,
+});
+const registerAccountSucces = () => ({
+  type: REGISTER.SUCCESS,
+});
+const registerAccountFail = (error) => ({
+  type: REGISTER.FAIL,
+  payload: error,
+});
+const loginAcountStart = (Account) => ({
+  type: LOGIN.START,
+  payload: Account,
+});
+const loginAcountSucces = (Account) => ({
+  type: LOGIN.SUCCESS,
+  payload: Account,
+});
+const loginAcountFail = (error) => ({
+  type: LOGIN.FAIL,
+  payload: error,
+});
 export {
   loadUsers,
   loadUsersSucces,
@@ -86,4 +130,13 @@ export {
   getUserStart,
   getUserSucces,
   getUserFail,
+  numberStart,
+  numberSucces,
+  numberFail,
+  registerAccountStart,
+  registerAccountSucces,
+  registerAccountFail,
+  loginAcountStart,
+  loginAcountSucces,
+  loginAcountFail,
 };

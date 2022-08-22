@@ -6,10 +6,14 @@ import { Link } from 'react-router-dom';
 import styles from './HomeStyles.module.scss';
 import classNames from 'classnames/bind';
 import Search from '~/components/Search';
+import ViewA from '~/components/ViewA';
+import ViewB from '~/components/ViewB';
+import ViewC from '~/components/ViewC';
 const cl = classNames.bind(styles);
 function Home() {
   const dispatch = useDispatch();
   const { users, loading } = useSelector((state) => state.users);
+
   const { keyWord } = useSelector((state) => state.searchUser);
   useEffect(() => {
     dispatch(loadUsers());
@@ -30,7 +34,7 @@ function Home() {
     if (keyWord === '') {
       return user;
     } else {
-      return user.phone.includes(keyWord);
+      return user?.phone.toString().includes(keyWord);
     }
   });
   return (
@@ -81,6 +85,9 @@ function Home() {
           </MDBTableBody>
         ))}
       </MDBTable>
+      <ViewA />
+      <ViewB />
+      <ViewC />
     </div>
   );
 }

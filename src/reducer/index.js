@@ -5,6 +5,9 @@ import deleteUsersReducer from './deleteReducer';
 import editUserReducer from './editUserReducer';
 import searchReducer from './searchReducer';
 import getUserReducer from './getUserReducer';
+import numberReducer from './numberReducer';
+import registerReducer from './registerReducer';
+import loginReducer from './loginReducer';
 const rootReducer = combineReducers({
   users: usersReducer,
   createUser: createUsersReducer,
@@ -12,6 +15,9 @@ const rootReducer = combineReducers({
   editUser: editUserReducer,
   searchUser: searchReducer,
   getUser: getUserReducer,
+  number: numberReducer,
+  register: registerReducer,
+  login: loginReducer,
 });
 
 export default rootReducer;
