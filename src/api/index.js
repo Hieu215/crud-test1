@@ -50,10 +50,27 @@ const registerUserApi = async (account) => {
 };
 const loginAccountApi = async (account) => {
   try {
-    const loginAccount = await axios.post('https://62d92a8b5d893b27b2dfa3ee.mockapi.io/account', account);
+    const loginAccount = await axios.post('https://62d92a8b5d893b27b2dfa3ee.mockapi.io/login', account);
     return loginAccount;
   } catch (error) {
     console.error(error.toString());
   }
 };
-export { loadUsersApi, createUserApi, deleteUserApi, editUserApi, getUserApi, registerUserApi, loginAccountApi };
+const logOutAccountApi = async () => {
+  try {
+    const logOutAccount = await axios.post('https://62d92a8b5d893b27b2dfa3ee.mockapi.io/login');
+    return logOutAccount;
+  } catch (error) {
+    console.error(error.toString());
+  }
+};
+export {
+  loadUsersApi,
+  createUserApi,
+  deleteUserApi,
+  editUserApi,
+  getUserApi,
+  registerUserApi,
+  loginAccountApi,
+  logOutAccountApi,
+};

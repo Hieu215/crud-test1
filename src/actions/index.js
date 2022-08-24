@@ -8,6 +8,7 @@ import {
   NUMBER,
   REGISTER,
   LOGIN,
+  LOGOUT,
 } from '~/constants';
 const loadUsers = () => ({
   type: USERS.LOAD,
@@ -99,16 +100,26 @@ const registerAccountFail = (error) => ({
   type: REGISTER.FAIL,
   payload: error,
 });
-const loginAcountStart = (Account) => ({
+const loginAcountStart = (account) => ({
   type: LOGIN.START,
-  payload: Account,
+  payload: account,
 });
-const loginAcountSucces = (Account) => ({
+const loginAcountSucces = () => ({
   type: LOGIN.SUCCESS,
-  payload: Account,
 });
 const loginAcountFail = (error) => ({
   type: LOGIN.FAIL,
+  payload: error,
+});
+const logOutAcountStart = (user) => ({
+  type: LOGOUT.START,
+  payload: user,
+});
+const logOutAcountSucces = () => ({
+  type: LOGOUT.SUCCESS,
+});
+const logOutAcountFail = (error) => ({
+  type: LOGOUT.FAIL,
   payload: error,
 });
 export {
@@ -139,4 +150,7 @@ export {
   loginAcountStart,
   loginAcountSucces,
   loginAcountFail,
+  logOutAcountStart,
+  logOutAcountSucces,
+  logOutAcountFail,
 };

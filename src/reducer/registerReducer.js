@@ -1,7 +1,7 @@
 import { REGISTER } from '~/constants';
 
 const initialState = {
-  currentUser: [],
+  success: false,
   loading: false,
   error: null,
 };
@@ -16,11 +16,13 @@ const registerReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
+        success: true,
       };
     case REGISTER.FAIL:
       return {
         ...state,
         loading: false,
+        success: false,
         error: action.payload,
       };
     default:

@@ -5,10 +5,14 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Button } from 'reactstrap';
 import PreviewImage from '../PreviewImage.js/PreviewImage';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const cl = classNames.bind(styles);
 
 function About() {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       avatar: '',
@@ -23,6 +27,12 @@ function About() {
       console.log(values);
     },
   });
+  const user = useSelector((state) => state.login.currentUsers);
+  useEffect(() => {
+    if (!user) {
+      navigate('/login/:id');
+    }
+  }, []);
   return (
     <div>
       <form className={cl('row', 'g-3', 'validate')} onSubmit={formik.handleSubmit}>

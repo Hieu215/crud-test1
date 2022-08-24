@@ -2,20 +2,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { deleteUserStart, loadUsers } from '~/actions';
 import { MDBTable, MDBTableHead, MDBTableBody, MDBBtn, MDBTooltip, MDBIcon, MDBSpinner } from 'mdb-react-ui-kit';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './HomeStyles.module.scss';
 import classNames from 'classnames/bind';
 import Search from '~/components/Search';
 import ViewA from '~/components/ViewA';
 import ViewB from '~/components/ViewB';
 import ViewC from '~/components/ViewC';
+
 const cl = classNames.bind(styles);
 function Home() {
   const dispatch = useDispatch();
   const { users, loading } = useSelector((state) => state.users);
-
+  const navigate = useNavigate();
   const { keyWord } = useSelector((state) => state.searchUser);
+  const user = useSelector((state) => state.login.currentUsers);
   useEffect(() => {
+    if (!user) {
+      navigate('/login/:id');
+    }
     dispatch(loadUsers());
   }, []);
   if (loading) {

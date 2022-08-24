@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
 import styles from './AddUserStyles.module.scss';
 import { createUserStart } from '~/actions';
@@ -18,6 +18,12 @@ const AddUser = () => {
   const dispatch = useDispatch();
   const [form] = Form.useForm();
   const { Option } = Select;
+  const user = useSelector((state) => state.login.currentUsers);
+  useEffect(() => {
+    if (!user) {
+      navigate('/login/:id');
+    }
+  }, []);
   const onFinish = (values) => {
     dispatch(createUserStart(values));
     toast.success('done');

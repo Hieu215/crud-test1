@@ -6,7 +6,7 @@ import { Button, Form, Input, Space } from 'antd';
 import 'antd/dist/antd.css';
 
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { toast } from 'react-toastify';
 import { loginAcountStart } from '~/actions';
@@ -17,10 +17,11 @@ function Login() {
   const dispatch = useDispatch();
   const [form] = Form.useForm();
 
+
   const onFinish = (values) => {
-    // dispatch(loginAcountStart(values));
-    // navigate('/');
-    // toast.success('done');
+    dispatch(loginAcountStart(values));
+    navigate('/');
+    toast.success('done');
   };
   return (
     <div>

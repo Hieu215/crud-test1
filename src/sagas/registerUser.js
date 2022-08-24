@@ -4,7 +4,6 @@ import { registerUserApi } from '~/api';
 import { REGISTER } from '~/constants';
 
 export function* onRegisterUsersStartAsync({ payload }) {
-
   try {
     const response = yield call(registerUserApi, payload);
     if (response.status === 200) {

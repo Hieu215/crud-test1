@@ -8,6 +8,7 @@ import getUserReducer from './getUserReducer';
 import numberReducer from './numberReducer';
 import registerReducer from './registerReducer';
 import loginReducer from './loginReducer';
+
 const rootReducer = combineReducers({
   users: usersReducer,
   createUser: createUsersReducer,

@@ -22,51 +22,6 @@ function Register() {
     navigate('/login/:id');
     toast.success('done');
   };
-  // const eyeConfirmPasswordRef = useRef();
-  // const eyePasswordRef = useRef();
-  // const { currentUsers } = useSelector((state) => state.loadAcount);
-  // console.log(currentUsers);
-  // useEffect(() => {
-  //   dispatch(loadAcountStart());
-  // }, []);
-  // const handleIconConfirmPassword = () => {
-  //   if (eyeConfirmPasswordRef.current.type === 'password') {
-  //     eyeConfirmPasswordRef.current.type = 'text';
-  //   } else {
-  //     eyeConfirmPasswordRef.current.type = 'password';
-  //   }
-  // };
-  // const handleIconPassword = () => {
-  //   if (eyePasswordRef.current.type === 'password') {
-  //     eyePasswordRef.current.type = 'text';
-  //   } else {
-  //     eyePasswordRef.current.type = 'password';
-  //   }
-  // };
-  // const formik = useFormik({
-  //   initialValues: {
-  //     account: '',
-  //     password: '',
-  //     confirmPassword: '',
-  //   },
-  //   validationSchema: Yup.object({
-  //     account: Yup.string().min(5, 'your name must be at least 5 characters!').required('Please provider a account.'),
-
-  //     password: Yup.string()
-  //       .required('Please enter your password')
-  //       .matches(
-  //         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-  //         'Password must contain 8 characters, one uppercase, one lowercase, one number and one special case Character',
-  //       ),
-  //     confirmPassword: Yup.string()
-  //       .required('Please enter the password again')
-  //       .oneOf([Yup.ref('password'), null], "Passwords didn't match"),
-  //   }),
-  //   onSubmit: (values) => {
-  //     dispatch(registerAccountStart(values));
-  //     navigate('/login/:id');
-  //   },
-  // });
 
   return (
     <div>

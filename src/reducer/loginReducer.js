@@ -1,4 +1,4 @@
-import { LOGIN } from '~/constants';
+import { LOGIN, LOGOUT } from '~/constants';
 const initialState = {
   currentUsers: null,
   loading: false,
@@ -10,14 +10,27 @@ const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        currentUsers: action.payload,
+      };
+    case LOGOUT.START:
+      return {
+        ...state,
+        loading: true,
+        error: false,
+        currentUsers: null,
       };
     case LOGIN.SUCCESS:
       return {
         ...state,
         loading: false,
-        currentUsers: action.payload,
+      };
+    case LOGOUT.START:
+      return {
+        ...state,
+        error: false,
       };
     case LOGIN.FAIL:
+    case LOGOUT.FAIL:
       return {
         ...state,
         loading: false,
